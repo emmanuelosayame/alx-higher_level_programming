@@ -1,5 +1,3 @@
-This is my initial README file
-
 The flow of my project
 
 * **0. Import a simple function from a simple file**
