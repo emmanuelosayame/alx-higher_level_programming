@@ -1,72 +1,118 @@
-# Python - More Classes and Objects
+# Python - Test-driven development
 
-Object-oriented programming in Python using class methods, static methods, class vs instance attributes, andbhow to use the special `__str__` and `__repr__` methods.
-Resource used:""
+Test-driven development using `docstring`
+and `unittest` in Python.
+
+Resources Utilized:""
 
 ## Tests :heavy_check_mark:
 
-* [tests](./tests): Folder of test files. Provided by Holberton School.
+* [tests](./tests): Folder of test files. Includes both ALX-provided ones as well as the
+following eight independently-developed:
+  * [0-add_integer.txt](./tests/0-add_integer.txt)
+  * [2-matrix_divided.txt](./tests/2-matrix_divided.txt)
+  * [3-say_my_name.txt](./tests/3-say_my_name.txt)
+  * [4-print_square.txt](./tests/4-print_square.txt)
+  * [5-text_indentation.txt](./tests/text_indentation.txt)
+  * [6-max_integer_test.py](./tests/6-max_integer_test.py)
+  * [100-matrix_mul.txt](./tests/100-matrix_mul.txt)
+  * [101-lazy_matrix_mul.txt](./tests/101-lazy_matrix_mul.txt)
+
+## Function Prototypes :floppy_disk:
+
+Prototypes for functions written in this project:
+
+| File                     | Prototype                                    |
+| ------------------------ | -------------------------------------------- |
+| `0-add_integer.py`       | `def add_integer(a, b=98):`                  |
+| `2-matrix_divided.py`    | `def matrix_divided(matrix, div):`           |
+| `3-say_my_name.py`       | `def say_my_name(first_name, last_name=""):` |
+| `4-print_square.py`      | `def print_square(size):`                    |
+| `5-text_indentation.py`  | `def text_indentation(text):`                |
+| `100-matrix_mul.py`      | `def matrix_mul(m_a, m_b):`                  |
+| `101-lazy_matrix_mul.py` | `def lazy_matrix_mul(m_a, m_b):`             |
+| `102-python.c`           | `void print_python_string(PyObject *p);`     |
 
 ## Tasks :page_with_curl:
 
-* **0. Simple rectangle**
-  * [0-rectangle.py](./0-rectangle.py): Empty Python class that defines a rectangle.
+* **0. Integers addition**
+  * [0-add_integer.py](./0-add_integer.py): Python function that returns the integer addition
+  of two numbers.
+  * If either of `a` or `b` is not an `int` or `float`, a `TypeError` is raised
+  with the message `a must be an integer` or `b must be an integer`.
+  * If either of `a` or `b` is a `float`, it is casted to an `int`
+  before addition.
 
-* **1. Real definition of a rectangle**
-  * [1-rectangle.py](./1-rectangle.py): Python class that defines a rectangle. Builds on [0-rectangle.py](./0-rectangle.py) with:
-    * Private instance attribute `width`.
-    * Property getter `def width(self):` to get `width`.
-    * Property setter `def width(self, value):` to set `width`.
-    * Private instance attribute `height`.
-    * Property getter `def height(self):` to get `height`.
-    * Property setter `def height(self, value):` to set `height`.
-    * Instantiation with optional `width` and `height`: `def __init(self,   width=0, height=0):`
-  * If either of `width` or `height` is not an integer, a `TypeError` is raised with the message `width must be an integer` or `height must be an integer`.
-  * If either of `width` or `height` is less than `0`, a `ValueError` is raised with the message `width must be >= 0` or `height must be >= 0`.
+* **1. Divide a matrix**
+  * [2-matrix_divided.py](./2-matrix_divided.py): Python function that divides all
+  elements of a matrix by a common divisor.
+  * Returns a new matrix representing the division of all elements of `matrix`
+  by `div`.
+  * Quotients are rounded to two decimal places.
+  * If `matrix` is not a list of lists of `int`s or `float`s, a `TypeError`
+  is raised with the message `matrix must be a matrix (list of lists) of
+  integers/floats`.
+  * If `matrix` contains rows of different lengths, a `TypeError` is raised
+  with the message `Each row of the matrix must have the same size`.
+  * If the divisor `div` is not an `int` or `float`, a `TypeError` is raised
+  with the message `div must be a number`.
+  * If `div` is `0`, a `ZeroDivisionError` is raised with the message
+  `division by zero`.
 
-* **2. Area and Perimeter**
-  * [2-rectangle.py](./2-rectangle.py): Python class that defines a rectangle. Builds on [1-rectangle.py](./1-rectangle.py) with:
-    * Public instance method `def area(self):` that returns the area of the rectangle.
-    * Public instance attribute `def perimeter(self):` that returns the permiter of the rectangle (if either of `width` or `height` equals `0`, the perimeter is `0`).
+* **2. Say my name**
+  * [3-say_my_name.py](./3-say_my_name.py): Python function that prints a name in
+  the format `My name is <first_name> <last_name>`.
+  * If either of `first_name` or `last_name` is not a `str`, a `TypeError` is
+  raised with the message `first_name must be a string` or `last_name must be a
+  string`.
 
-* **3. String representation**
-  * [3-rectangle.py](./3-rectangle.py): Python class that defines a rectangle. Builds on [2-rectangle.py](./2-rectangle.py) with:
-    * Special method `__str__` to print the rectangle with the `#` character (if either of `width` or `height` equals `0`, the method returns an empty
-    string.).
+* **3. Print square**
+  * [4-print_square.py](./4-print_square.py): Python function that prints a square using
+  the `#` character.
+  * The paramter `size` represents the height/width of the square.
+  * If `size` is not an `int`, a `TypeError` is raised  with the message,
+  `size must be an integer`.
+  * If `size` is less than `0`, a `ValueError` is raised with the message `size
+  must be >= 0`.
 
-* **4. Eval is magic**
-  * [4-rectangle.py](./4-rectangle.py): Python class that defines a rectangle. Builds on [3-rectangle.py](./3-rectangle.py) with:
-    * Special method `__repr__` to return a string representation of the rectangle.
+* **4. Text indentation**
+  * [5-text_indentation.py](./5-text_indentation.py): Python function that prints text with
+  indentation.
+  * Two new lines are printed after any `.`, `?`, or `:` character.
+  * If `text` is not a `str`, a `TypeError` is raised with the message `text
+  must be a string`.
+  * No spaces are printed at the beginning or end of each printed line.
 
-* **5. Detect instance deletion**
-  * [5-rectangle.py](./5-rectangle.py): Python class that defines a rectangle. Builds on [4-rectangle.py](./4-rectangle.py) with:
-    * Special method `__del__` that prints the message `Bye rectangle...` when a `Rectangle` is deleted.
+* **5. Max integer - Unittest**
+  * [tests/6-max_integer_test.py](./tests/6-max_integer_text.py): Python class/script
+  that runs unittests for the function `def max_integer(list=[]):`
+  (provided by Holberton School).
 
-* **6. How many instances**
-  * [6-rectangle.py](./6-rectangle.py): Python class that defines a rectangle. Builds on [5-rectangle.py](./5-rectangle.py) with:
-    * Public class attribute `number_of_instances` that is initialized to `0`, incremented for each new instantiation, and decremened for each instance deletion.
+* **6. Matrix multiplication**
+  * [100-matrix_mul.py](./100-matrix_mul.py): Python function that multiplies two matrices.
+  * Returns a new matrix representing the multiplication of `m_a` by `m_b`.
+  * If either of `m_a` or `m_b` is empty (ie. `== []` or `== [[]]`), a
+  `ValueError` is raised with the message `m_a can't be empty` or `m_b can't
+  be empty`.
+  * If either of `m_a` or `m_b` is not a list, a `TypeError` is raised with
+  the message `m_a must be a list` or `m_b` must be a list.
+  * If either of `m_a` or `m_b` is not a list of lists, a `TypeError` is raised
+  with the message `m_a must be a list of lists` or `m_b must be a list of lists`.
+  * If either of `m_a` or `m_b` is not a list of lists of `int`s or `float`s, a
+  `TypeError` is raised with the message `m_a should contain only integers or
+  floats` or `m_b should contain only integers or floats`.
+  * If either of `m_a` or `m_b` contains rows of different lengths, a `TypeError`
+  is raised with the message `each row of m_a must should be of the same size` or
+  `each row of m_b must should be of the same size`.
+  * If `m_a` and `m_b` cannot be multiplied (ie. row size of `m_a` does not match
+  column size of `m_b`), a `ValueError` is raised with the message `m_a and m_b
+  can't be multiplied`.
 
-* **7. Change representation**
-  * [7-rectangle.py](./7-rectangle.py): Python class that defines a rectangle. Builds on [6-rectangle.py](./6-rectangle.py) with:
-    * Public class attribute `class_symbol` that is initialized to `#` but can be any type - used as the symbol for string representation.
+* **7. Lazy matrix multiplication**
+  * [101-lazy_matrix_mul.py](./101-lazy_matrix_mul.py): Python function that multiplies
+  two matrices using the module `NumPy`.
+  * Identical in function to [100-matrix_mul.py](./100-matrix_mul.py).
 
-* **8. Compare rectangles**
-  * [8-rectangle.py](./8-rectangle.py): Python class that defines a rectangle. Builds on [7-rectangle.py](./7-rectangle.py) with:
-    * Static method `def bigger_or_equal(rect_1, rect_2):` that returns the rectangle with the greater area (returns `rect_1` if both areas are equal).
-    * If either of `rect_1` or `rect_2` is not a `Rectangle` instance, a `TypeError` is raised with the message `rect_1 must be an instance of Rectangle` or `rect_2 must be an instance of Rectangle`.
-
-* **9. A square is a rectangle**
-  * [9-rectangle.py](./9-rectangle.py): Python class that defines a rectangle. Builds on [8-rectangle.py](./8-rectangle.py) with:
-    * Class method `def square(cls, size=0):` that returns a new `Rectangle` instance with `width == height == size`.
-
-* **10. N Queens**
-
- ![alt text](http://www.crestbook.com/files/Judit-photo1_602x433.jpg)
- 
-  * [101-nqueens.py](./101-nqueens.py): Python program that solves the [N queens puzzle](https://en.wikipedia.org/wiki/Eight_queens_puzzle).
-  * Usage: `./101-nqueens.py N`
-  * Determines all possible solutions for placing N non-attacking queens on an NxN chessboard.
-  * Exactly two arguments must be provided. Otherwise, the program prints `Usage: nqueens N` and exits with the status `1`.
-  * If the provided `N` is not an integer, the program prints `N must be a number` and exits with the status `1`.
-  * If the provided `N` is less than `4`, the program prints `N must be at least 4` and exits with the status `1`.
-  * Solutions are printed one per line in the format `[[r, c], [r, c], [r, c], [r, c]]` where `r` and `c` represent the row and column, respectively, where a queen must be placed.
+* **8. CPython #3: Python Strings**
+  * [102-python.c](./102-python.c): C function that prints basic information about Python
+  string objects.
